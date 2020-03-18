@@ -1,0 +1,62 @@
+:root {
+  /* Breakpoints */
+
+  --bp-mobile: 375px;
+  --bp-desktop: 1440px;
+
+  /* Colors */
+
+  /* Primary */
+  --c-desaturated-dark-cyan: hsl(180, 29%, 50%);
+
+  /* Neutral */
+  --c-white: hsl(0, 0%, 100%);
+  --c-light-grayish-cyan-background: hsl(180, 52%, 96%);
+  --c-light-grayish-cyan-filter-tablets: hsl(180, 31%, 95%);
+  --c-dark-grayish-cyan: hsl(180, 8%, 52%);
+  --c-very-dark-grayish-cyan: hsl(180, 14%, 20%);
+
+  /* Typography */
+
+  /* Font size */
+  --fs-base: 15px;
+
+  /* Font family */
+  --ff-base: 'Spartan', sans-serif;
+
+  /* Font weight */
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fs-base);
+}
+
+body {
+  background-color: var(--c-very-light-gray);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ff-base);
+  height: 100vh;
+  margin: 0;
+}
+
+/* Frontend Mentor attribution */
+
+.attribution {
+  font-size: 11px;
+  margin-bottom: 1rem;
+  margin-top: auto;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
