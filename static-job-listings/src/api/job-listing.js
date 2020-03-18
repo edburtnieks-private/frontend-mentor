@@ -1,5 +1,9 @@
 export const getJobListing = async () => {
-  const response = await fetch('./job-listing.json');
-  const jobListing = await response.json();
-  return jobListing;
+  try {
+    const response = await fetch('./data/job-listing.json');
+    const jobListing = await response.json();
+    return jobListing;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };

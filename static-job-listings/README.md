@@ -6,4 +6,5 @@
 
 ## Technology Stack
 
-Built using only HTML and CSS utilizing CSS grid for card positioning
+- HTML, CSS, JS
+- Web Components

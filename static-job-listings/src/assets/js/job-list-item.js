@@ -10,20 +10,6 @@ export class JobListItem extends HTMLElement {
     this.job = job;
   }
 
-  createElementWithContent(tag, content, elementToAppendTo) {
-    const element = document.createElement(tag);
-    element.textContent = content;
-    elementToAppendTo.appendChild(element);
-  }
-
-  setTextContent(element, text) {
-    element.textContent = text;
-  }
-
-  setAttribute(element, attribute, value) {
-    element.setAttribute(attribute, value);
-  }
-
   connectedCallback() {
     const wrapperElement = this.shadowRoot.querySelector('#wrapper');
     const headerElement = this.shadowRoot.querySelector('#header');
@@ -75,6 +61,20 @@ export class JobListItem extends HTMLElement {
 
     // Set attributes
     this.setAttribute(addedElement, 'datetime', this.job.added);
+  }
+
+  createElementWithContent(tag, content, elementToAppendTo) {
+    const element = document.createElement(tag);
+    element.textContent = content;
+    elementToAppendTo.appendChild(element);
+  }
+
+  setTextContent(element, text) {
+    element.textContent = text;
+  }
+
+  setAttribute(element, attribute, value) {
+    element.setAttribute(attribute, value);
   }
 }
 
