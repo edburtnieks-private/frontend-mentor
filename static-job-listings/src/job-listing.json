@@ -5,11 +5,11 @@
     "title": "Senior Frontend Developer",
     "tags": ["New!", "Featured"],
     "added": "2019-03-17",
-    "type": ["Full Time"],
-    "location": ["USA only"],
+    "type": "Full Time",
+    "location": "USA only",
     "categories": {
-      "role": ["Frontend"],
-      "level": ["Senior"],
+      "role": "Frontend",
+      "level": "Senior",
       "languages": ["HTML", "CSS", "JavaScript"]
     }
   },
@@ -19,11 +19,11 @@
     "title": "Featured Fullstack Developer",
     "tags": ["New!", "Featured"],
     "added": "2019-03-17",
-    "type": ["Part Time"],
-    "location": ["Remote"],
+    "type": "Part Time",
+    "location": "Remote",
     "categories": {
-      "role": ["Fullstack"],
-      "level": ["Midweight"],
+      "role": "Fullstack",
+      "level": "Midweight",
       "languages": ["Python"],
       "tools": ["React"]
     }
@@ -34,11 +34,11 @@
     "title": "Junior Frontend Developer",
     "tags": ["New!"],
     "added": "2019-03-16",
-    "type": ["Part Time"],
-    "location": ["USA only"],
+    "type": "Part Time",
+    "location": "USA only",
     "categories": {
-      "role": ["Frontend"],
-      "level": ["Junior"],
+      "role": "Frontend",
+      "level": "Junior",
       "languages": ["JavaScript"],
       "tools": ["React", "Sass"]
     }
@@ -48,11 +48,11 @@
     "company": "MyHome",
     "title": "Junior Frontend Developer",
     "added": "2019-03-13",
-    "type": ["Contract"],
-    "location": ["USA only"],
+    "type": "Contract",
+    "location": "USA only",
     "categories": {
-      "role": ["Frontend"],
-      "level": ["Junior"],
+      "role": "Frontend",
+      "level": "Junior",
       "languages": ["CSS", "JavaScript"]
     }
   },
@@ -61,11 +61,11 @@
     "company": "Loop Studios",
     "title": "Software Engineer",
     "added": "2019-03-11",
-    "type": ["Full Time"],
-    "location": ["Worldwide"],
+    "type": "Full Time",
+    "location": "Worldwide",
     "categories": {
-      "role": ["Fullstack"],
-      "level": ["Midweight"],
+      "role": "Fullstack",
+      "level": "Midweight",
       "languages": ["JavaScript", "Ruby"],
       "tools": ["Sass"]
     }
@@ -75,11 +75,11 @@
     "company": "FaceIt",
     "title": "Junior Backend Developer",
     "added": "2019-03-04",
-    "type": ["Full Time"],
-    "location": ["UK only"],
+    "type": "Full Time",
+    "location": "UK only",
     "categories": {
-      "role": ["Backend"],
-      "level": ["Junior"],
+      "role": "Backend",
+      "level": "Junior",
       "languages": ["Ruby"],
       "tools": ["RoR"]
     }
@@ -89,11 +89,11 @@
     "company": "Shortly",
     "title": "Junior Developer",
     "added": "2019-03-04",
-    "type": ["Full Time"],
-    "location": ["Worldwide"],
+    "type": "Full Time",
+    "location": "Worldwide",
     "categories": {
-      "role": ["Frontend"],
-      "level": ["Junior"],
+      "role": "Frontend",
+      "level": "Junior",
       "languages": ["HTML", "JavaScript"],
       "tools": ["Sass"]
     }
@@ -103,11 +103,11 @@
     "company": "Insure",
     "title": "Junior Frontend Developer",
     "added": "2019-03-04",
-    "type": ["Full Time"],
-    "location": ["USA only"],
+    "type": "Full Time",
+    "location": "USA only",
     "categories": {
-      "role": ["Frontend"],
-      "level": ["Junior"],
+      "role": "Frontend",
+      "level": "Junior",
       "languages": ["JavaScript"],
       "tools": ["Vue", "Sass"]
     }
@@ -117,11 +117,11 @@
     "company": "Eyecam Co.",
     "title": "Full Stack Engineer",
     "added": "2019-02-26",
-    "type": ["Full Time"],
-    "location": ["Worldwide"],
+    "type": "Full Time",
+    "location": "Worldwide",
     "categories": {
-      "role": ["Fullstack"],
-      "level": ["Midweight"],
+      "role": "Fullstack",
+      "level": "Midweight",
       "languages": ["JavaScript", "Python"],
       "tools": ["Django"]
     }
@@ -131,11 +131,11 @@
     "company": "The Air Filter Company",
     "title": "Front-end Dev",
     "added": "2019-02-18",
-    "type": ["Part Time"],
-    "location": ["Worldwide"],
+    "type": "Part Time",
+    "location": "Worldwide",
     "categories": {
-      "role": ["Frontend"],
-      "level": ["Junior"],
+      "role": "Frontend",
+      "level": "Junior",
       "languages": ["JavaScript"],
       "tools": ["React", "Sass"]
     }
