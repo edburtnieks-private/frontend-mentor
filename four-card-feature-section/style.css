@@ -1,0 +1,210 @@
+:root {
+  /* Breakpoints */
+
+  --bp-mobile: 375px;
+  --bp-desktop: 1440px;
+
+  /* Colors */
+
+  /* Primary */
+  --c-red: hsl(0, 78%, 62%);
+  --c-cyan: hsl(180, 62%, 55%);
+  --c-orange: hsl(34, 97%, 64%);
+  --c-blue: hsl(212, 86%, 64%);
+
+  /* Neutral */
+  --c-white: hsl(0, 0%, 100%);
+  --c-very-dark-blue: hsl(234, 12%, 34%);
+  --c-grayish-blue: hsl(229, 6%, 66%);
+  --c-very-light-gray: hsl(0, 0%, 98%);
+
+  /* Opacity */
+
+  --c-very-dark-blue-70: hsla(234, 12%, 34%, 0.1);
+
+  /* Typography */
+
+  /* Font size */
+  --fs-base: 15px;
+
+  /* Font family */
+  --ff-base: 'Poppins', sans-serif;
+
+  /* Font weight */
+  --fw-extra-light: 200;
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fs-base);
+}
+
+body {
+  background-color: var(--c-very-light-gray);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ff-base);
+  height: 100vh;
+  margin: 0;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: var(--c-very-dark-blue);
+}
+
+p {
+  color: var(--c-grayish-blue);
+  line-height: 1.7;
+}
+
+.page-header {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 5.675rem 2.15rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.625rem;
+  font-weight: var(--fw-extra-light);
+  line-height: 1.425;
+  margin-bottom: 1rem;
+}
+
+.title-bold {
+  font-weight: var(--fw-semi-bold);
+}
+
+.page-content {
+  padding-left: 2.15rem;
+  padding-right: 2.15rem;
+}
+
+.card {
+  background-color: var(--c-white);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px 10px var(--c-very-dark-blue-70);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  position: relative;
+}
+
+.card + .card {
+  margin-top: 1.75rem;
+}
+
+.card::before {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  content: '';
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.card-supervisor {
+  grid-area: card-supervisor;
+}
+
+.card-supervisor::before {
+  background-color: var(--c-cyan);
+}
+
+.card-team-builder {
+  grid-area: card-team-builder;
+}
+
+.card-team-builder::before {
+  background-color: var(--c-red);
+}
+
+.card-karma {
+  grid-area: card-karma;
+}
+
+.card-karma::before {
+  background-color: var(--c-orange);
+}
+
+.card-calculator {
+  grid-area: card-calculator;
+}
+
+.card-calculator::before {
+  background-color: var(--c-blue);
+}
+
+.card-title {
+  font-size: 1.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-text {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.card-icon {
+  align-self: flex-end;
+  margin-top: auto;
+  max-width: 3.75rem;
+}
+
+.page-footer {
+  padding: 5.675rem 2.15rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 1110px) {
+  .page-header {
+    padding-bottom: 4.4rem;
+    padding-top: 4.4rem;
+  }
+
+  .title {
+    font-size: 2.45rem;
+  }
+
+  .page-content {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-areas:
+      '.               card-team-builder               .'
+      'card-supervisor card-team-builder card-calculator'
+      'card-supervisor card-karma        card-calculator'
+      '.               card-karma                      .';
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    max-width: 74rem; /* 1110px */
+  }
+
+  .card + .card {
+    margin-top: 0;
+  }
+
+  .card-icon {
+    max-width: 100%;
+  }
+
+  .page-footer {
+    padding: 4.4rem 2.15rem;
+  }
+}
