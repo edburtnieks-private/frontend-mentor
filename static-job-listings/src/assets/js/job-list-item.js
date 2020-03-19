@@ -11,7 +11,7 @@ export class JobListItem extends HTMLElement {
   }
 
   connectedCallback() {
-    const wrapperElement = this.shadowRoot.querySelector('#wrapper');
+    const logoElement = this.shadowRoot.querySelector('#logo');
     const headerElement = this.shadowRoot.querySelector('#header');
     const titleElement = this.shadowRoot.querySelector('#title');
     const companyElement = this.shadowRoot.querySelector('#company');
@@ -19,12 +19,6 @@ export class JobListItem extends HTMLElement {
     const typeElement = this.shadowRoot.querySelector('#type');
     const locationElement = this.shadowRoot.querySelector('#location');
     const categoriesElement = this.shadowRoot.querySelector('#categories');
-
-    // Create logo element
-    const logoElement = document.createElement('img');
-    this.setAttribute(logoElement, 'src', this.job.companyLogo);
-    this.setAttribute(logoElement, 'alt', this.job.company);
-    wrapperElement.insertBefore(logoElement, wrapperElement.children[0]);
 
     // Create tag list element
     if (this.job.tags) {
@@ -60,6 +54,8 @@ export class JobListItem extends HTMLElement {
     this.setTextContent(locationElement, this.job.location);
 
     // Set attributes
+    this.setAttribute(logoElement, 'src', this.job.companyLogo);
+    this.setAttribute(logoElement, 'alt', this.job.company);
     this.setAttribute(addedElement, 'datetime', this.job.added);
   }
 
