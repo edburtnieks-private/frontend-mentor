@@ -24,64 +24,15 @@
     <title>Frontend Mentor | Job Listings</title>
   </head>
   <body>
+    <header class="page-header"></header>
+
     <main>
-      <section id="job-listing">
-        <template id="job-list-item">
-          <style>
-            ul {
-              display: flex;
-              list-style: none;
-              margin: 0;
-              padding: 0;
-            }
-
-            .wrapper {
-              align-items: center;
-              display: flex;
-            }
-
-            .company {
-              color: var(--c-desaturated-dark-cyan);
-              font-weight: var(--fw-bold);
-            }
-          </style>
-
-          <article id="wrapper" class="wrapper">
-            <img id="logo" />
-
-            <section>
-              <header id="header">
-                <span id="company" class="company">
-                  <slot name="company">Company</slot>
-                </span>
-                <!-- Tag list is created dynamically -->
-              </header>
-
-              <h2 id="title">
-                <slot name="title">Job title</slot>
-              </h2>
-
-              <footer>
-                <time id="added">
-                  <slot name="added">Time added</slot>
-                </time>
-                <span id="type">
-                  <slot name="type">Type</slot>
-                </span>
-                <span id="location">
-                  <slot name="location">Location</slot>
-                </span>
-              </footer>
-            </section>
-
-            <ul id="categories">
-              <!-- Category lists are created dynamically -->
-            </ul>
-          </article>
-        </template>
+      <section class="job-listing-wrapper">
+        <job-list id="job-listing"></job-list>
       </section>
     </main>
 
+    <!-- Frontend Mentor attribution -->
     <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"

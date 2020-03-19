@@ -40,12 +40,151 @@ html {
 }
 
 body {
-  background-color: var(--c-very-light-gray);
+  background-color: var(--c-light-grayish-cyan-background);
+  font-family: var(--ff-base);
+  margin: 0;
+}
+
+.page-header {
+  background: var(--c-desaturated-dark-cyan) url('../../images/bg-header-desktop.svg') center;
+  height: 156px;
+}
+
+.job-listing-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1110px;
+  padding-top: 5rem;
+}
+
+job-list ul {
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+job-list-item {
+  display: block;
+  position: relative;
+}
+
+job-list-item ul {
+  display: inline-flex;
+}
+
+job-list-item + job-list-item {
+  margin-top: 1.5rem;
+}
+
+job-list-item.featured::before {
+  background-color: var(--c-desaturated-dark-cyan);
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  content: '';
+  height: 100%;
+  position: absolute;
+  width: 5px;
+}
+
+job-list-item .fm-content {
+  align-items: center;
+  background-color: var(--c-white);
+  border-radius: 8px;
+  display: flex;
+  padding: 2.2rem 2.6rem;
+}
+
+job-list-item .fm-info {
   display: flex;
   flex-direction: column;
-  font-family: var(--ff-base);
-  height: 100vh;
+  height: 88px;
+  justify-content: space-between;
+  margin-left: 1.7rem;
+}
+
+job-list-item .fm-company {
+  color: var(--c-desaturated-dark-cyan);
+  font-size: 0.93rem;
+  font-weight: var(--fw-bold);
+}
+
+job-list-item .fm-tags {
+  margin-left: 0.9rem;
+  vertical-align: middle;
+}
+
+job-list-item .fm-tag {
+  border-radius: 1rem;
+  color: var(--c-white);
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: var(--fw-bold);
+  padding: 0.35rem 0.6rem;
+  text-transform: uppercase;
+}
+
+job-list-item .fm-tag-content,
+job-list-item .fm-category-content {
+  line-height: 1;
+  margin-top: 3px;
+}
+
+job-list-item .fm-tag.new {
+  background-color: var(--c-desaturated-dark-cyan);
+}
+
+job-list-item .fm-tag.featured {
+  background-color: var(--c-very-dark-grayish-cyan);
+}
+
+job-list-item .fm-tag + .fm-tag {
+  margin-left: 0.5rem;
+}
+
+job-list-item .fm-title {
+  color: var(--c-very-dark-grayish-cyan);
+  font-size: 1.2rem;
   margin: 0;
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+}
+
+job-list-item .fm-title:hover,
+job-list-item .fm-title:focus {
+  color: var(--c-desaturated-dark-cyan);
+}
+
+job-list-item .fm-footer {
+  color: var(--c-dark-grayish-cyan);
+  font-weight: var(--fw-medium);
+}
+
+job-list-item .fm-categories {
+  margin-left: auto;
+}
+
+job-list-item .fm-category-button {
+  background-color: var(--c-light-grayish-cyan-filter-tablets);
+  border-radius: 4px;
+  border: 0;
+  color: var(--c-desaturated-dark-cyan);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: var(--fw-bold);
+  padding: 0.5rem;
+}
+
+job-list-item .fm-category-button:hover,
+job-list-item .fm-category-button:focus {
+  background-color: var(--c-desaturated-dark-cyan);
+  color: var(--c-white);
+}
+
+job-list-item .fm-category + .fm-category {
+  margin-left: 1rem;
 }
 
 /* Frontend Mentor attribution */
@@ -53,7 +192,7 @@ body {
 .attribution {
   font-size: 11px;
   margin-bottom: 1rem;
-  margin-top: auto;
+  margin-top: 5rem;
   text-align: center;
 }
 

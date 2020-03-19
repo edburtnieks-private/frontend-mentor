@@ -16,7 +16,7 @@
   {
     "companyLogo": "./images/manage.svg",
     "company": "Manage",
-    "title": "Featured Fullstack Developer",
+    "title": "Fullstack Developer",
     "tags": ["New!", "Featured"],
     "added": "2019-03-17",
     "type": "Part Time",
@@ -39,8 +39,8 @@
     "categories": {
       "role": "Frontend",
       "level": "Junior",
-      "languages": ["JavaScript"],
-      "tools": ["React", "Sass"]
+      "tools": ["React", "Sass"],
+      "languages": ["JavaScript"]
     }
   },
   {

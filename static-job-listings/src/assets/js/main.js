@@ -1,14 +1,13 @@
-import { getJobListing } from '../../api/job-listing.js';
-import { JobListItem } from './job-list-item.js';
+import { getJobList } from '../../api/job-list.js';
+import './components/JobList/index.js';
+import './components/JobListItem/index.js';
 
 (async () => {
-  const jobListingElement = document.querySelector('#job-listing');
+  const jobListElement = document.querySelector('#job-listing');
 
   try {
-    const jobListing = await getJobListing();
-    jobListing.forEach(({ ...jobAttributes }) => {
-      jobListingElement.appendChild(new JobListItem({ ...jobAttributes }));
-    });
+    const jobList = await getJobList();
+    jobListElement.jobList = jobList;
   } catch (error) {
     console.error(error);
   }
