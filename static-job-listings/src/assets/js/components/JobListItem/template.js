@@ -18,15 +18,15 @@ jobListItemTemplate.innerHTML = `
         </a>
 
         <footer class="fm-footer">
-          <time id="fm-added">
+          <time id="fm-added" class="fm-footer-item">
             <slot name="added">ADDED</slot>
           </time>
 
-          <span id="fm-type">
+          <span id="fm-type" class="fm-footer-item">
             <slot name="type">TYPE</slot>
           </span>
 
-          <span id="fm-location">
+          <span id="fm-location" class="fm-footer-item">
             <slot name="location">LOCATION</slot>
           </span>
         </footer>

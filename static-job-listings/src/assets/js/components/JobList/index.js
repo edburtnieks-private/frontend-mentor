@@ -122,7 +122,11 @@ export class JobList extends HTMLElement {
       this.setProperty(logoElement, 'alt', item.company);
       this.setProperty(companyElement, 'textContent', item.company);
       this.setProperty(titleElement, 'textContent', item.title);
-      this.setProperty(addedElement, 'textContent', item.added);
+      this.setProperty(
+        addedElement,
+        'textContent',
+        dateFns.distanceInWordsStrict(new Date(), new Date(item.added), { addSuffix: true })
+      );
       this.setProperty(typeElement, 'textContent', item.type);
       this.setProperty(locationElement, 'textContent', item.location);
     });

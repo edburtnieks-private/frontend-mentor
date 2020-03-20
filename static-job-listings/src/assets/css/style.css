@@ -16,6 +16,14 @@
   --c-dark-grayish-cyan: hsl(180, 8%, 52%);
   --c-very-dark-grayish-cyan: hsl(180, 14%, 20%);
 
+  /* Opacity */
+
+  --c-desaturated-dark-cyan-20: hsla(180, 29%, 50%, 0.2);
+
+  /* Box shadow */
+
+  --bs-job-item: 0 20px 20px -10px var(--c-desaturated-dark-cyan-20);
+
   /* Typography */
 
   /* Font size */
@@ -46,7 +54,7 @@ body {
 }
 
 .page-header {
-  background: var(--c-desaturated-dark-cyan) url('../../images/bg-header-desktop.svg') center;
+  background: var(--c-desaturated-dark-cyan) url('../images/bg-header-desktop.svg') center;
   height: 156px;
 }
 
@@ -65,6 +73,7 @@ job-list ul {
 }
 
 job-list-item {
+  box-shadow: var(--bs-job-item);
   display: block;
   position: relative;
 }
@@ -84,7 +93,7 @@ job-list-item.featured::before {
   content: '';
   height: 100%;
   position: absolute;
-  width: 5px;
+  width: 0.35rem;
 }
 
 job-list-item .fm-content {
@@ -157,7 +166,14 @@ job-list-item .fm-title:focus {
 
 job-list-item .fm-footer {
   color: var(--c-dark-grayish-cyan);
+  display: flex;
   font-weight: var(--fw-medium);
+}
+
+job-list-item .fm-footer-item + .fm-footer-item::before {
+  content: '\2022';
+  margin-left: 1.1rem;
+  margin-right: 1.1rem;
 }
 
 job-list-item .fm-categories {
