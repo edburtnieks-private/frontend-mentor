@@ -49,8 +49,11 @@ html {
 
 body {
   background-color: var(--c-light-grayish-cyan-background);
+  display: flex;
+  flex-direction: column;
   font-family: var(--ff-base);
   margin: 0;
+  min-height: 100vh;
 }
 
 .page-header {
@@ -65,7 +68,13 @@ body {
   padding-top: 5rem;
 }
 
+job-list {
+  display: flex;
+  flex-direction: column;
+}
+
 job-list ul {
+  animation: fade-in 1s ease-in-out;
   list-style-type: none;
   margin-bottom: 0;
   margin-top: 0;
@@ -203,12 +212,65 @@ job-list-item .fm-category + .fm-category {
   margin-left: 1rem;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Loader */
+
+.lds-ring {
+  align-self: center;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid var(--c-desaturated-dark-cyan);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--c-desaturated-dark-cyan) transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Frontend Mentor attribution */
 
 .attribution {
   font-size: 11px;
   margin-bottom: 1rem;
-  margin-top: 5rem;
+  margin-top: auto;
   text-align: center;
 }
 

@@ -75,61 +75,65 @@ export class JobList extends HTMLElement {
   }
 
   render(items) {
-    items.forEach((item) => {
-      const jobListItemElement = document.createElement('job-list-item');
-      this.querySelector('#fm-job-list').appendChild(jobListItemElement);
+    if (items && items.length) {
+      this.removeChild(this.querySelector('[slot="loading"]'));
 
-      const headerElement = jobListItemElement.querySelector('#fm-header');
-      const logoElement = jobListItemElement.querySelector('#fm-logo');
-      const companyElement = jobListItemElement.querySelector('#fm-company');
-      const titleElement = jobListItemElement.querySelector('#fm-title');
-      const addedElement = jobListItemElement.querySelector('#fm-added');
-      const typeElement = jobListItemElement.querySelector('#fm-type');
-      const locationElement = jobListItemElement.querySelector('#fm-location');
-      const categoriesElement = jobListItemElement.querySelector('#fm-categories');
+      items.forEach((item) => {
+        const jobListItemElement = document.createElement('job-list-item');
+        this.querySelector('#fm-job-list').appendChild(jobListItemElement);
 
-      // Create tag list
-      if (item.tags && Array.isArray(item.tags)) {
-        const tagListElement = this.createTagList();
-        item.tags.forEach((tag) => {
-          const tagListItemElement = this.createTagListItem(tag);
-          tagListElement.appendChild(tagListItemElement);
+        const headerElement = jobListItemElement.querySelector('#fm-header');
+        const logoElement = jobListItemElement.querySelector('#fm-logo');
+        const companyElement = jobListItemElement.querySelector('#fm-company');
+        const titleElement = jobListItemElement.querySelector('#fm-title');
+        const addedElement = jobListItemElement.querySelector('#fm-added');
+        const typeElement = jobListItemElement.querySelector('#fm-type');
+        const locationElement = jobListItemElement.querySelector('#fm-location');
+        const categoriesElement = jobListItemElement.querySelector('#fm-categories');
 
-          switch (tag) {
-            case 'Featured':
-              jobListItemElement.classList.add('featured');
-              break;
+        // Create tag list
+        if (item.tags && Array.isArray(item.tags)) {
+          const tagListElement = this.createTagList();
+          item.tags.forEach((tag) => {
+            const tagListItemElement = this.createTagListItem(tag);
+            tagListElement.appendChild(tagListItemElement);
+
+            switch (tag) {
+              case 'Featured':
+                jobListItemElement.classList.add('featured');
+                break;
+            }
+          });
+          headerElement.appendChild(tagListElement);
+        }
+
+        // Create category list
+        Object.entries(item.categories).forEach(([name, value]) => {
+          if (Array.isArray(value)) {
+            // For multiple values in same category create sub-category lists
+            const categoryListElement = this.createCategoryList(value);
+            categoriesElement.appendChild(categoryListElement);
+          } else {
+            // For single category values create list item
+            const categoryListItemElement = this.createCategoryListItem(value);
+            categoriesElement.appendChild(categoryListItemElement);
           }
         });
-        headerElement.appendChild(tagListElement);
-      }
 
-      // Create category list
-      Object.entries(item.categories).forEach(([name, value]) => {
-        if (Array.isArray(value)) {
-          // For multiple values in same category create sub-category lists
-          const categoryListElement = this.createCategoryList(value);
-          categoriesElement.appendChild(categoryListElement);
-        } else {
-          // For single category values create list item
-          const categoryListItemElement = this.createCategoryListItem(value);
-          categoriesElement.appendChild(categoryListItemElement);
-        }
+        // Set properties
+        this.setProperty(logoElement, 'src', item.companyLogo);
+        this.setProperty(logoElement, 'alt', item.company);
+        this.setProperty(companyElement, 'textContent', item.company);
+        this.setProperty(titleElement, 'textContent', item.title);
+        this.setProperty(
+          addedElement,
+          'textContent',
+          dateFns.distanceInWordsStrict(new Date(), new Date(item.added), { addSuffix: true })
+        );
+        this.setProperty(typeElement, 'textContent', item.type);
+        this.setProperty(locationElement, 'textContent', item.location);
       });
-
-      // Set properties
-      this.setProperty(logoElement, 'src', item.companyLogo);
-      this.setProperty(logoElement, 'alt', item.company);
-      this.setProperty(companyElement, 'textContent', item.company);
-      this.setProperty(titleElement, 'textContent', item.title);
-      this.setProperty(
-        addedElement,
-        'textContent',
-        dateFns.distanceInWordsStrict(new Date(), new Date(item.added), { addSuffix: true })
-      );
-      this.setProperty(typeElement, 'textContent', item.type);
-      this.setProperty(locationElement, 'textContent', item.location);
-    });
+    }
   }
 }
 
