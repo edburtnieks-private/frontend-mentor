@@ -1,140 +1,83 @@
 import { jobListTemplate } from './template.js';
+import { JobItem } from '../JobItem/index.js';
 
 export class JobList extends HTMLElement {
   constructor() {
     super();
+
+    this.categories = {};
   }
 
   connectedCallback() {
     this.appendChild(jobListTemplate.content.cloneNode(true));
+
+    const jobItemAnimationDuration = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--fm-job-item-animation-duration')
+    );
+    const jobItemAnimationDurationOffset = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--fm-job-item-animation-duration-offset')
+    );
+
+    this.addEventListener('category-changed', (event) => {
+      if (!this.categories[event.detail.key]) {
+        this.categories[event.detail.key] = new Set();
+      }
+
+      if (this.categories[event.detail.key].has(event.detail.value)) {
+        this.categories[event.detail.key].delete(event.detail.value);
+
+        if (this.categories[event.detail.key].size === 0) {
+          delete this.categories[event.detail.key];
+        }
+      } else {
+        this.categories[event.detail.key].add(event.detail.value);
+      }
+
+      const jobArticleElements = this.querySelectorAll('fm-job-article');
+
+      const categoryArray = Array.from(Object.keys(this.categories));
+
+      Array.from(jobArticleElements).forEach((jobArticleElement) => {
+        const categoryCount = Object.entries(jobArticleElement.dataset).filter(([key, value]) => {
+          return this.categories[key] && this.categories[key].has(value);
+        }).length;
+
+        if (categoryArray.length !== categoryCount) {
+          jobArticleElement.parentElement.classList.add('hidden');
+          
+          if (!isNaN(jobItemAnimationDuration) && !isNaN(jobItemAnimationDurationOffset)) {
+            setTimeout(() => {
+              jobArticleElement.parentElement.style.display = 'none';
+            }, jobItemAnimationDuration + jobItemAnimationDurationOffset);
+          } else {
+            jobArticleElement.parentElement.style.display = 'none';
+          }
+        } else {
+          jobArticleElement.parentElement.classList.remove('hidden');
+          jobArticleElement.parentElement.style.display = 'block';
+        }
+      });
+    });
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('category-changed', () => {});
   }
 
   set jobList(items) {
-    this.render(items);
+    this.setJobList(items);
   }
 
-  setProperty(element, property, value) {
-    element[property] = value;
-  }
-
-  createTagListItem(tag) {
-    const tagListItemElement = document.createElement('li');
-    tagListItemElement.className = 'fm-tag';
-
-    const tagContentElement = document.createElement('span');
-    tagContentElement.className = 'fm-tag-content';
-    this.setProperty(tagContentElement, 'textContent', tag);
-    tagListItemElement.appendChild(tagContentElement);
-
-    switch (tag) {
-      case 'New!':
-        tagListItemElement.classList.add('new');
-        break;
-      case 'Featured':
-        tagListItemElement.classList.add('featured');
-        break;
-    }
-
-    return tagListItemElement;
-  }
-
-  createTagList() {
-    const tagListElement = document.createElement('ul');
-    tagListElement.className = 'fm-tags';
-    return tagListElement;
-  }
-
-  createCategoryButton(category) {
-    const categoryButtonElement = document.createElement('button');
-    categoryButtonElement.className = 'fm-category-button';
-
-    const categoryContent = document.createElement('span');
-    categoryContent.className = 'fm-category-content';
-    this.setProperty(categoryContent, 'textContent', category);
-    categoryButtonElement.appendChild(categoryContent);
-
-    return categoryButtonElement;
-  }
-
-  createCategoryListItem(category) {
-    const categoryListItemElement = document.createElement('li');
-    categoryListItemElement.className = 'fm-category';
-    const categoryButtonElement = this.createCategoryButton(category);
-    categoryListItemElement.appendChild(categoryButtonElement);
-    return categoryListItemElement;
-  }
-
-  createCategoryList(categories) {
-    const categoryListElement = document.createElement('ul');
-    categoryListElement.className = 'fm-category';
-    categories.forEach((category) => {
-      const categoryListItemElement = this.createCategoryListItem(category);
-      categoryListElement.appendChild(categoryListItemElement);
-    });
-    return categoryListElement;
-  }
-
-  render(items) {
+  setJobList(items) {
     if (items && items.length) {
       this.removeChild(this.querySelector('[slot="loading"]'));
 
-      items.forEach((item) => {
-        const jobListItemElement = document.createElement('job-list-item');
-        this.querySelector('#fm-job-list').appendChild(jobListItemElement);
-
-        const headerElement = jobListItemElement.querySelector('#fm-header');
-        const logoElement = jobListItemElement.querySelector('#fm-logo');
-        const companyElement = jobListItemElement.querySelector('#fm-company');
-        const titleElement = jobListItemElement.querySelector('#fm-title');
-        const addedElement = jobListItemElement.querySelector('#fm-added');
-        const typeElement = jobListItemElement.querySelector('#fm-type');
-        const locationElement = jobListItemElement.querySelector('#fm-location');
-        const categoriesElement = jobListItemElement.querySelector('#fm-categories');
-
-        // Create tag list
-        if (item.tags && Array.isArray(item.tags)) {
-          const tagListElement = this.createTagList();
-          item.tags.forEach((tag) => {
-            const tagListItemElement = this.createTagListItem(tag);
-            tagListElement.appendChild(tagListItemElement);
-
-            switch (tag) {
-              case 'Featured':
-                jobListItemElement.classList.add('featured');
-                break;
-            }
-          });
-          headerElement.appendChild(tagListElement);
-        }
-
-        // Create category list
-        Object.entries(item.categories).forEach(([name, value]) => {
-          if (Array.isArray(value)) {
-            // For multiple values in same category create sub-category lists
-            const categoryListElement = this.createCategoryList(value);
-            categoriesElement.appendChild(categoryListElement);
-          } else {
-            // For single category values create list item
-            const categoryListItemElement = this.createCategoryListItem(value);
-            categoriesElement.appendChild(categoryListItemElement);
-          }
-        });
-
-        // Set properties
-        this.setProperty(logoElement, 'src', item.companyLogo);
-        this.setProperty(logoElement, 'alt', item.company);
-        this.setProperty(companyElement, 'textContent', item.company);
-        this.setProperty(titleElement, 'textContent', item.title);
-        this.setProperty(
-          addedElement,
-          'textContent',
-          dateFns.distanceInWordsStrict(new Date(), new Date(item.added), { addSuffix: true })
-        );
-        this.setProperty(typeElement, 'textContent', item.type);
-        this.setProperty(locationElement, 'textContent', item.location);
+      items.forEach((item, index) => {
+        const jobItemElement = new JobItem(item, index + 1);
+        this.querySelector('.fm-job-list').appendChild(jobItemElement);
       });
     }
   }
 }
 
-customElements.define('job-list', JobList);
+customElements.define('fm-job-list', JobList);
