@@ -3,14 +3,14 @@ import { CategoryButton } from '../CategoryButton/index.js';
 export class CategoryItem extends HTMLLIElement {
   constructor(name, category) {
     super();
-    this.name = name;
-    this.category = category;
+    this._name = name;
+    this._category = category;
   }
 
   connectedCallback() {
     this.className = 'fm-category-item';
 
-    const categoryButtonElement = new CategoryButton(this.name, this.category);
+    const categoryButtonElement = new CategoryButton(this._name, this._category);
     this.appendChild(categoryButtonElement);
   }
 }
