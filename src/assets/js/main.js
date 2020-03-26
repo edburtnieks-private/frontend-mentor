@@ -1,4 +1,4 @@
-import { getJobList } from '../../api/job-list.js';
+import { getJobList } from './api/job-list.js';
 import './components/JobFilters/index.js';
 import './components/JobList/index.js';
 
