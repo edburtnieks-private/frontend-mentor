@@ -3,6 +3,7 @@ import { categoryButtonTemplate } from './template.js';
 export class CategoryButton extends HTMLButtonElement {
   constructor(name, category) {
     super();
+
     this._name = name;
     this._category = category;
 

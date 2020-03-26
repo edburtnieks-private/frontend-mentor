@@ -3,6 +3,7 @@ import { JobArticle } from '../JobArticle/index.js';
 export class JobItem extends HTMLLIElement {
   constructor(job, index) {
     super();
+
     this.job = job;
     this.index = index;
   }

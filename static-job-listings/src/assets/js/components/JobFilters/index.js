@@ -4,6 +4,7 @@ import { FilterItem } from '../FilterItem/index.js';
 export class JobFilters extends HTMLElement {
   constructor() {
     super();
+
     this._filters = new Set();
 
     this.toggleFilter = this.toggleFilter.bind(this);
@@ -15,17 +16,16 @@ export class JobFilters extends HTMLElement {
   connectedCallback() {
     this.appendChild(jobFiltersTemplate.content.cloneNode(true));
 
+    if (!this.hasAttribute('filtered')) {
+      this.setAttribute('filtered', '');
+    }
+    this.classList.add('hidden');
+
     this.jobFilterListElement = this.querySelector('.fm-filter-list');
     this.clearFiltersButtonElement = this.querySelector('.fm-clear-filters-button');
 
     this.addEventListener('filter-removed', () => this.removeFilter(event.detail));
     this.clearFiltersButtonElement.addEventListener('click', this.clearFilters);
-
-    if (!this.hasAttribute('filtered')) {
-      this.setAttribute('filtered', false);
-    }
-
-    this.classList.add('hidden');
   }
 
   disconnectedCallback() {

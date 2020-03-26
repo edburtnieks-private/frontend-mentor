@@ -1,11 +1,12 @@
 import { jobItemTemplate } from './template.js';
-import { TagList } from '../TagList/index.js';
-import { CategoryList } from '../CategoryList/index.js';
 import { CategoryItem } from '../CategoryItem/index.js';
+import { CategoryList } from '../CategoryList/index.js';
+import { TagList } from '../TagList/index.js';
 
 export class JobArticle extends HTMLElement {
   constructor({ ...props }) {
     super();
+
     this.props = props;
   }
 

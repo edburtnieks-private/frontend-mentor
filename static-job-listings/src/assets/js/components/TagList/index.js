@@ -3,6 +3,7 @@ import { TagItem } from '../TagItem/index.js';
 export class TagList extends HTMLUListElement {
   constructor(tags) {
     super();
+
     this._tags = tags;
   }
 

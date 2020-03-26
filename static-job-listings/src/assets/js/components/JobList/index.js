@@ -4,6 +4,7 @@ import { JobItem } from '../JobItem/index.js';
 export class JobList extends HTMLElement {
   constructor() {
     super();
+
     this._filters = new Set();
 
     this.toggleFilter = this.toggleFilter.bind(this);

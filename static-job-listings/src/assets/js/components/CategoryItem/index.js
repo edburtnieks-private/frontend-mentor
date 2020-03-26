@@ -3,6 +3,7 @@ import { CategoryButton } from '../CategoryButton/index.js';
 export class CategoryItem extends HTMLLIElement {
   constructor(name, category) {
     super();
+    
     this._name = name;
     this._category = category;
   }

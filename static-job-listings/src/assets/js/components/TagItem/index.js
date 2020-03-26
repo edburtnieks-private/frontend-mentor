@@ -3,14 +3,13 @@ import { tagItemTemplate } from './template.js';
 export class TagItem extends HTMLLIElement {
   constructor(tag) {
     super();
+
     this._tag = tag;
   }
 
   connectedCallback() {
     this.appendChild(tagItemTemplate.content.cloneNode(true));
 
-    this.tagContentElement = this.querySelector('.fm-tag-content');
-    
     this.className = 'fm-tag-item';
 
     switch (this._tag) {
@@ -22,7 +21,8 @@ export class TagItem extends HTMLLIElement {
         break;
     }
 
-    this.tagContentElement.textContent = this._tag;
+    const tagContentElement = this.querySelector('.fm-tag-content');
+    tagContentElement.textContent = this._tag;
   }
 }
 
