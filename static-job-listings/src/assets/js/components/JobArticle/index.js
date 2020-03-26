@@ -64,10 +64,13 @@ export class JobArticle extends HTMLElement {
     this.setProperty(
       addedElement,
       'textContent',
-      dateFns.distanceInWordsStrict(new Date(), new Date(this.props.added), { addSuffix: true })
+      dateFns.distanceInWordsStrict(new Date('2020-03-18'), new Date(this.props.added), { addSuffix: true })
     );
     this.setProperty(typeElement, 'textContent', this.props.type);
     this.setProperty(locationElement, 'textContent', this.props.location);
+
+    // Set element attributes
+    addedElement.setAttribute('datetime', this.props.added);
   }
 }
 
