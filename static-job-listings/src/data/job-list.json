@@ -1,10 +1,10 @@
 [
   {
-    "companyLogo": "./images/photosnap.svg",
+    "companyLogo": "./assets/images/photosnap.svg",
     "company": "Photosnap",
-    "title": "Senior Frontend Developer",
     "tags": ["New!", "Featured"],
-    "added": "2019-03-17",
+    "title": "Senior Frontend Developer",
+    "added": "2020-03-17",
     "type": "Full Time",
     "location": "USA only",
     "categories": {
@@ -14,11 +14,11 @@
     }
   },
   {
-    "companyLogo": "./images/manage.svg",
+    "companyLogo": "./assets/images/manage.svg",
     "company": "Manage",
-    "title": "Featured Fullstack Developer",
     "tags": ["New!", "Featured"],
-    "added": "2019-03-17",
+    "title": "Fullstack Developer",
+    "added": "2020-03-17",
     "type": "Part Time",
     "location": "Remote",
     "categories": {
@@ -29,25 +29,25 @@
     }
   },
   {
-    "companyLogo": "./images/account.svg",
+    "companyLogo": "./assets/images/account.svg",
     "company": "Account",
-    "title": "Junior Frontend Developer",
     "tags": ["New!"],
-    "added": "2019-03-16",
+    "title": "Junior Frontend Developer",
+    "added": "2020-03-16",
     "type": "Part Time",
     "location": "USA only",
     "categories": {
       "role": "Frontend",
       "level": "Junior",
-      "languages": ["JavaScript"],
-      "tools": ["React", "Sass"]
+      "tools": ["React", "Sass"],
+      "languages": ["JavaScript"]
     }
   },
   {
-    "companyLogo": "./images/myhome.svg",
+    "companyLogo": "./assets/images/myhome.svg",
     "company": "MyHome",
     "title": "Junior Frontend Developer",
-    "added": "2019-03-13",
+    "added": "2020-03-13",
     "type": "Contract",
     "location": "USA only",
     "categories": {
@@ -57,10 +57,10 @@
     }
   },
   {
-    "companyLogo": "./images/loop-studios.svg",
+    "companyLogo": "./assets/images/loop-studios.svg",
     "company": "Loop Studios",
     "title": "Software Engineer",
-    "added": "2019-03-11",
+    "added": "2020-03-11",
     "type": "Full Time",
     "location": "Worldwide",
     "categories": {
@@ -71,10 +71,10 @@
     }
   },
   {
-    "companyLogo": "./images/faceit.svg",
+    "companyLogo": "./assets/images/faceit.svg",
     "company": "FaceIt",
     "title": "Junior Backend Developer",
-    "added": "2019-03-04",
+    "added": "2020-03-04",
     "type": "Full Time",
     "location": "UK only",
     "categories": {
@@ -85,10 +85,10 @@
     }
   },
   {
-    "companyLogo": "./images/shortly.svg",
+    "companyLogo": "./assets/images/shortly.svg",
     "company": "Shortly",
     "title": "Junior Developer",
-    "added": "2019-03-04",
+    "added": "2020-03-04",
     "type": "Full Time",
     "location": "Worldwide",
     "categories": {
@@ -99,10 +99,10 @@
     }
   },
   {
-    "companyLogo": "./images/insure.svg",
+    "companyLogo": "./assets/images/insure.svg",
     "company": "Insure",
     "title": "Junior Frontend Developer",
-    "added": "2019-03-04",
+    "added": "2020-03-04",
     "type": "Full Time",
     "location": "USA only",
     "categories": {
@@ -113,10 +113,10 @@
     }
   },
   {
-    "companyLogo": "./images/eyecam-co.svg",
+    "companyLogo": "./assets/images/eyecam-co.svg",
     "company": "Eyecam Co.",
     "title": "Full Stack Engineer",
-    "added": "2019-02-26",
+    "added": "2020-02-26",
     "type": "Full Time",
     "location": "Worldwide",
     "categories": {
@@ -127,10 +127,10 @@
     }
   },
   {
-    "companyLogo": "./images/the-air-filter-company.svg",
+    "companyLogo": "./assets/images/the-air-filter-company.svg",
     "company": "The Air Filter Company",
     "title": "Front-end Dev",
-    "added": "2019-02-18",
+    "added": "2020-02-18",
     "type": "Part Time",
     "location": "Worldwide",
     "categories": {

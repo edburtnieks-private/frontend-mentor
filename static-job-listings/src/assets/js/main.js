@@ -1,13 +1,25 @@
-import { getJobListing } from '../../api/job-listing.js';
-import { JobListItem } from './job-list-item.js';
+import { getJobList } from '../../api/job-list.js';
+import './components/JobFilters/index.js';
+import './components/JobList/index.js';
 
 (async () => {
-  const jobListingElement = document.querySelector('#job-listing');
+  const jobListElement = document.querySelector('#job-listing');
+  const jobFiltersElement = document.querySelector('#job-filters');
 
   try {
-    const jobListing = await getJobListing();
-    jobListing.forEach(({ ...jobAttributes }) => {
-      jobListingElement.appendChild(new JobListItem({ ...jobAttributes }));
+    const jobList = await getJobList();
+    jobListElement.jobList = jobList;
+
+    jobListElement.addEventListener('filter-toggle', (event) => {
+      jobFiltersElement.toggleFilter(event.detail);
+    });
+
+    jobFiltersElement.addEventListener('filters-cleared', () => {
+      jobListElement.clearFilters();
+    });
+
+    jobFiltersElement.addEventListener('filter-removed', (event) => {
+      jobListElement.removeFilter(event.detail);
     });
   } catch (error) {
     console.error(error);
