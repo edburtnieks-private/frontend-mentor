@@ -16,9 +16,6 @@ export class JobFilters extends HTMLElement {
   connectedCallback() {
     this.appendChild(jobFiltersTemplate.content.cloneNode(true));
 
-    if (!this.hasAttribute('filtered')) {
-      this.setAttribute('filtered', '');
-    }
     this.classList.add('hidden');
 
     this.jobFilterListElement = this.querySelector('.fm-filter-list');

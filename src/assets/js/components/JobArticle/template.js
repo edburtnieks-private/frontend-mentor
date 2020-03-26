@@ -4,16 +4,18 @@ jobItemTemplate.innerHTML = `
   <article class="fm-content">
     <img class="fm-logo" />
 
-    <section class="fm-info">
+    <div class="fm-info">
       <header class="fm-header">
         <span class="fm-company">
           <slot>COMPANY</slot>
         </span>
       </header>
 
-      <a class="fm-title" href="#">
-        <slot>TITLE</slot>
-      </a>
+      <h2 class="fm-title">
+        <a class="fm-title-link" href="#">
+          <slot>TITLE</slot>
+        </a>
+      </h2>
 
       <footer class="fm-footer">
         <time class="fm-added fm-footer-item">
@@ -28,7 +30,7 @@ jobItemTemplate.innerHTML = `
           <slot>LOCATION</slot>
         </span>
       </footer>
-    </section>
+    </div>
   </article>
 `;
 
