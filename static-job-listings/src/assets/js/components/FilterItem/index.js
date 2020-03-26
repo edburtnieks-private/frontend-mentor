@@ -21,6 +21,7 @@ export class FilterItem extends HTMLLIElement {
     filterContentElement.textContent = this._filter;
 
     this.removeFilterButtonElement.value = this._filter;
+    this.removeFilterButtonElement.setAttribute('aria-label', `Remove filter: ${this._filter}`);
     this.removeFilterButtonElement.addEventListener('click', this.removeFilter);
 
     const removeFilterIconElement = this.querySelector('.fm-remove-filter-icon');
