@@ -11,9 +11,11 @@ jobItemTemplate.innerHTML = `
         </span>
       </header>
 
-      <a class="fm-title" href="#">
-        <slot>TITLE</slot>
-      </a>
+      <h2 class="fm-title">
+        <a class="fm-title-link" href="#">
+          <slot>TITLE</slot>
+        </a>
+      </h2>
 
       <footer class="fm-footer">
         <time class="fm-added fm-footer-item">

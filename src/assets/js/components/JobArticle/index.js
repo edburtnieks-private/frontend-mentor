@@ -21,7 +21,7 @@ export class JobArticle extends HTMLElement {
     const headerElement = this.querySelector('.fm-header');
     const logoElement = this.querySelector('.fm-logo');
     const companyElement = this.querySelector('.fm-company');
-    const titleElement = this.querySelector('.fm-title');
+    const titleElement = this.querySelector('.fm-title-link');
     const addedElement = this.querySelector('.fm-added');
     const typeElement = this.querySelector('.fm-type');
     const locationElement = this.querySelector('.fm-location');
