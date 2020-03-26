@@ -226,18 +226,15 @@ fm-job-article.featured::before {
 }
 
 .fm-title {
-  margin: 0;
+  color: var(--c-very-dark-grayish-cyan);
   font-size: 1rem;
   font-weight: var(--fw-bold);
-}
-
-.fm-title-link {
-  color: var(--c-very-dark-grayish-cyan);
+  margin: 0;
   text-decoration: none;
 }
 
-.fm-title-link:hover,
-.fm-title-link:focus {
+.fm-title:hover,
+.fm-title:focus {
   color: var(--c-desaturated-dark-cyan);
 }
 
