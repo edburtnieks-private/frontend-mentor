@@ -4,7 +4,7 @@ import { JobItem } from '../JobItem/index.js';
 export class JobList extends HTMLElement {
   constructor() {
     super();
-    this._filters = {};
+    this._filters = new Set();
 
     this.toggleFilter = this.toggleFilter.bind(this);
     this.addFilter = this.addFilter.bind(this);
@@ -46,11 +46,7 @@ export class JobList extends HTMLElement {
   toggleFilter(event) {
     const filter = event.detail;
 
-    if (!this._filters[filter.key]) {
-      this._filters[filter.key] = new Set();
-    }
-
-    if (this._filters[filter.key].has(filter.value)) {
+    if (this._filters.has(filter.value)) {
       this.removeFilter(filter);
     } else {
       this.addFilter(filter);
@@ -58,18 +54,17 @@ export class JobList extends HTMLElement {
   }
 
   addFilter(filter) {
-    this._filters[filter.key].add(filter.value);
+    this._filters.add(filter.value);
 
-    const filterArray = Array.from(Object.keys(this._filters));
+    const filterValueArray = Object.values(this._filters);
+    const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
 
-    this.jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
+    Array.from(jobArticleElements).forEach((jobArticleElement) => {
+      const filterArray = Object.values(jobArticleElement.dataset);
+      const filterValues = filterArray.map((value) => value.split(',')).flat();
+      const filterCount = filterValues.filter((x) => this._filters && this._filters.has(x)).length;
 
-    Array.from(this.jobArticleElements).forEach((jobArticleElement) => {
-      const filterCount = Object.entries(jobArticleElement.dataset).filter(([key, value]) => {
-        return this._filters[key] && this._filters[key].has(value);
-      }).length;
-
-      if (filterArray.length !== filterCount) {
+      if (this._filters.size !== filterCount) {
         jobArticleElement.parentElement.classList.add('hidden');
 
         if (!isNaN(this.jobItemAnimationDuration) && !isNaN(this.jobItemAnimationDurationOffset)) {
@@ -84,22 +79,17 @@ export class JobList extends HTMLElement {
   }
 
   removeFilter(filter) {
-    this._filters[filter.key].delete(filter.value);
+    this._filters.delete(filter.value);
 
-    if (this._filters[filter.key].size === 0) {
-      delete this._filters[filter.key];
-    }
+    const filterValueArray = Object.values(this._filters);
+    const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
 
-    const filterArray = Array.from(Object.keys(this._filters));
+    Array.from(jobArticleElements).forEach((jobArticleElement) => {
+      const filterArray = Object.values(jobArticleElement.dataset);
+      const filterValues = filterArray.map((value) => value.split(',')).flat();
+      const filterCount = filterValues.filter((x) => this._filters && this._filters.has(x)).length;
 
-    this.jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
-
-    Array.from(this.jobArticleElements).forEach((jobArticleElement) => {
-      const filterCount = Object.entries(jobArticleElement.dataset).filter(([key, value]) => {
-        return this._filters[key] && this._filters[key].has(value);
-      }).length;
-
-      if (filterArray.length === filterCount) {
+      if (this._filters.size === filterCount) {
         jobArticleElement.parentElement.classList.remove('hidden');
         jobArticleElement.parentElement.style.display = 'block';
       }
@@ -107,11 +97,11 @@ export class JobList extends HTMLElement {
   }
 
   clearFilters() {
-    this._filters = {};
+    this._filters.clear();
 
-    this.jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
+    const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
 
-    Array.from(this.jobArticleElements).forEach((jobArticleElement) => {
+    Array.from(jobArticleElements).forEach((jobArticleElement) => {
       jobArticleElement.parentElement.classList.remove('hidden');
       jobArticleElement.parentElement.style.display = 'block';
     });

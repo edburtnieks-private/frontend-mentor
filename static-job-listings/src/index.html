@@ -18,10 +18,13 @@
   </head>
   <body>
     <header class="page-header">
-      <fm-job-filters id="job-filters"></fm-job-filters>
+      <div class="page-header-background"></div>
+      <div class="job-filters-wrapper">
+        <fm-job-filters id="job-filters"></fm-job-filters>
+      </div>
     </header>
 
-    <main>
+    <main class="main-content">
       <section class="job-listing-wrapper">
         <fm-job-list id="job-listing">
           <div slot="loading" class="lds-ring">
