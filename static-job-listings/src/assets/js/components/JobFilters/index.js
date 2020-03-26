@@ -18,7 +18,7 @@ export class JobFilters extends HTMLElement {
     this.jobFilterListElement = this.querySelector('.fm-filter-list');
     this.clearFiltersButtonElement = this.querySelector('.fm-clear-filters-button');
 
-    this.addEventListener('filter-removed', () => this.removeFilter(event.detail.value));
+    this.addEventListener('filter-removed', () => this.removeFilter(event.detail));
     this.clearFiltersButtonElement.addEventListener('click', this.clearFilters);
 
     if (!this.hasAttribute('filtered')) {
@@ -66,8 +66,8 @@ export class JobFilters extends HTMLElement {
   }
 
   toggleFilter(filter) {
-    if (this._filters.has(filter.value)) {
-      this.removeFilter(filter.value);
+    if (this._filters.has(filter)) {
+      this.removeFilter(filter);
     } else {
       this.addFilter(filter);
     }
@@ -78,8 +78,8 @@ export class JobFilters extends HTMLElement {
       this.filtered = true;
     }
 
-    this._filters.add(filter.value);
-    const filterItemElement = new FilterItem(filter.key, filter.value);
+    this._filters.add(filter);
+    const filterItemElement = new FilterItem(filter);
     this.jobFilterListElement.appendChild(filterItemElement);
   }
 

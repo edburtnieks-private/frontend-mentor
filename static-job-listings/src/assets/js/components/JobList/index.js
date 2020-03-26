@@ -46,7 +46,7 @@ export class JobList extends HTMLElement {
   toggleFilter(event) {
     const filter = event.detail;
 
-    if (this._filters.has(filter.value)) {
+    if (this._filters.has(filter)) {
       this.removeFilter(filter);
     } else {
       this.addFilter(filter);
@@ -54,7 +54,7 @@ export class JobList extends HTMLElement {
   }
 
   addFilter(filter) {
-    this._filters.add(filter.value);
+    this._filters.add(filter);
 
     const filterValueArray = Object.values(this._filters);
     const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
@@ -79,7 +79,7 @@ export class JobList extends HTMLElement {
   }
 
   removeFilter(filter) {
-    this._filters.delete(filter.value);
+    this._filters.delete(filter);
 
     const filterValueArray = Object.values(this._filters);
     const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');

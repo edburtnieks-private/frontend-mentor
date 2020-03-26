@@ -12,14 +12,13 @@ export class CategoryButton extends HTMLButtonElement {
   connectedCallback() {
     this.appendChild(categoryButtonTemplate.content.cloneNode(true));
 
-    this.categoryContentElement = this.querySelector('.fm-category-content');
-
     this.className = 'fm-category-button';
     this.value = this._category;
     this.setAttribute('aria-label', `Filter ${this._name}: ${this._category}`);
     this.addEventListener('click', this.toggleFilter);
 
-    this.categoryContentElement.textContent = this._category;
+    const categoryContentElement = this.querySelector('.fm-category-content');
+    categoryContentElement.textContent = this._category;
   }
 
   disconnectedCallback() {
@@ -30,10 +29,7 @@ export class CategoryButton extends HTMLButtonElement {
     this.dispatchEvent(
       new CustomEvent('filter-toggle', {
         bubbles: true,
-        detail: {
-          key: this._name,
-          value: event.currentTarget.value,
-        },
+        detail: event.currentTarget.value,
       })
     );
   }

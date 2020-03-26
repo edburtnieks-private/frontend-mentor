@@ -1,9 +1,8 @@
 import { filterItemTemplate } from './template.js';
 
 export class FilterItem extends HTMLLIElement {
-  constructor(name, filter) {
+  constructor(filter) {
     super();
-    this._name = name;
     this._filter = filter;
 
     this.removeFilter = this.removeFilter.bind(this);
@@ -35,10 +34,7 @@ export class FilterItem extends HTMLLIElement {
     this.dispatchEvent(
       new CustomEvent('filter-removed', {
         bubbles: true,
-        detail: {
-          key: this._name,
-          value: event.currentTarget.value,
-        },
+        detail: event.currentTarget.value,
       })
     );
   }
