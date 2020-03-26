@@ -1,6 +1,6 @@
 import { getJobList } from '../../api/job-list.js';
-import './components/JobList/index.js';
 import './components/JobFilters/index.js';
+import './components/JobList/index.js';
 
 (async () => {
   const jobListElement = document.querySelector('#job-listing');
