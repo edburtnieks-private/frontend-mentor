@@ -8,7 +8,7 @@ Challenge - https://www.frontendmentor.io/challenges/four-card-feature-section-w
 
 Solution - https://www.frontendmentor.io/solutions/html-and-css-only-mobile-first-site-BkEHB-6z
 
-Live site - https://frontend-mentor-four-card-feature-section.now.sh/
+Live site - https://fm-edburtnieks-1.now.sh/
 
 ## Technology Stack
 
