@@ -205,6 +205,7 @@ p {
   }
 
   .page-footer {
-    padding: 4.4rem 2.15rem;
+    margin-top: auto;
+    padding: 4.4rem 2.15rem 2rem;
   }
 }
