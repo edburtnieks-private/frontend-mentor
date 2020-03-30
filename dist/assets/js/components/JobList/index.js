@@ -1,7 +1,6 @@
-import { jobListTemplate } from './template.js';
 import { JobItem } from '../JobItem/index.js';
 
-export class JobList extends HTMLElement {
+export class JobList extends HTMLUListElement {
   constructor() {
     super();
 
@@ -14,10 +13,7 @@ export class JobList extends HTMLElement {
   }
 
   connectedCallback() {
-    this.appendChild(jobListTemplate.content.cloneNode(true));
-
-    this.jobListElement = this.querySelector('.fm-job-list');
-
+    this.className = 'fm-job-list';
     this.addEventListener('filter-toggle', this.toggleFilter);
   }
 
@@ -29,7 +25,7 @@ export class JobList extends HTMLElement {
     if (items && items.length) {
       items.forEach((item, index) => {
         const jobItemElement = new JobItem(item, index + 1);
-        this.jobListElement.appendChild(jobItemElement);
+        this.appendChild(jobItemElement);
       });
     }
   }
@@ -48,7 +44,7 @@ export class JobList extends HTMLElement {
     this._filters.add(filter);
 
     const filterValueArray = Object.values(this._filters);
-    const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
+    const jobArticleElements = this.querySelectorAll('fm-job-article');
 
     Array.from(jobArticleElements).forEach((jobArticleElement) => {
       const filterArray = Object.values(jobArticleElement.dataset);
@@ -66,7 +62,7 @@ export class JobList extends HTMLElement {
     this._filters.delete(filter);
 
     const filterValueArray = Object.values(this._filters);
-    const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
+    const jobArticleElements = this.querySelectorAll('fm-job-article');
 
     Array.from(jobArticleElements).forEach((jobArticleElement) => {
       const filterArray = Object.values(jobArticleElement.dataset);
@@ -83,7 +79,7 @@ export class JobList extends HTMLElement {
   clearFilters() {
     this._filters.clear();
 
-    const jobArticleElements = this.jobListElement.querySelectorAll('fm-job-article');
+    const jobArticleElements = this.querySelectorAll('fm-job-article');
 
     Array.from(jobArticleElements).forEach((jobArticleElement) => {
       jobArticleElement.parentElement.classList.remove('hidden');
@@ -92,4 +88,4 @@ export class JobList extends HTMLElement {
   }
 }
 
-customElements.define('fm-job-list', JobList);
+customElements.define('fm-job-list', JobList, { extends: 'ul' });

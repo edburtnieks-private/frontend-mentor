@@ -30,10 +30,6 @@
   /* Font weight */
   --fw-medium: 500;
   --fw-bold: 700;
-
-  /* Animation duration */
-  /* --fm-job-item-animation-duration: 250ms;
-  --fm-job-item-animation-duration-offset: 100ms; */
 }
 
 *,
@@ -149,12 +145,8 @@ fm-job-filters.hidden {
   margin-top: 3.7rem;
 }
 
-fm-job-list {
-  display: flex;
-  flex-direction: column;
-}
-
-fm-job-list ul {
+.fm-job-list,
+.fm-job-list ul {
   list-style: none;
   margin-bottom: 0;
   margin-top: 0;
