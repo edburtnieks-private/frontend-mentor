@@ -16,15 +16,7 @@ export class JobList extends HTMLElement {
   connectedCallback() {
     this.appendChild(jobListTemplate.content.cloneNode(true));
 
-    this.loadingElement = this.querySelector('[slot="loading"]');
     this.jobListElement = this.querySelector('.fm-job-list');
-
-    this.jobItemAnimationDuration = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue('--fm-job-item-animation-duration')
-    );
-    this.jobItemAnimationDurationOffset = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue('--fm-job-item-animation-duration-offset')
-    );
 
     this.addEventListener('filter-toggle', this.toggleFilter);
   }
@@ -35,8 +27,6 @@ export class JobList extends HTMLElement {
 
   set jobList(items) {
     if (items && items.length) {
-      this.removeChild(this.loadingElement);
-
       items.forEach((item, index) => {
         const jobItemElement = new JobItem(item, index + 1);
         this.jobListElement.appendChild(jobItemElement);
@@ -67,14 +57,7 @@ export class JobList extends HTMLElement {
 
       if (this._filters.size !== filterCount) {
         jobArticleElement.parentElement.classList.add('hidden');
-
-        if (!isNaN(this.jobItemAnimationDuration) && !isNaN(this.jobItemAnimationDurationOffset)) {
-          setTimeout(() => {
-            jobArticleElement.parentElement.style.display = 'none';
-          }, this.jobItemAnimationDuration + this.jobItemAnimationDurationOffset);
-        } else {
-          jobArticleElement.parentElement.style.display = 'none';
-        }
+        jobArticleElement.parentElement.style.display = 'none';
       }
     });
   }
